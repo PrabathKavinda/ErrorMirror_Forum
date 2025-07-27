@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'forum_db',
         'USER': 'root',
-        'PASSWORD': 'Sham@2001', # Your actual password
+        'PASSWORD': os.getenv('DB_PASSWORD', default=None), # Retrieve password from environment variable
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
