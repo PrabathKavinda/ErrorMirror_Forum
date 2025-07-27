@@ -12,7 +12,16 @@ class Profile(models.Model):
     
     # NOTE: You will need to install the Pillow library for ImageField to work.
     # In your terminal, run: pip install Pillow
-    avatar = models.ImageField(default='default_avatar.jpg', upload_to='profile_avatars')
+    from django.templatetags.static import static
+    import os
+    
+    def get_default_avatar():
+        default_path = static('images/default_avatar.jpg')
+        if not os.path.exists(default_path):
+            raise FileNotFoundError(f"Default avatar file not found at {default_path}")
+        return default_path
+    
+    avatar = models.ImageField(default=get_default_avatar, upload_to='profile_avatars')
     bio = models.TextField(max_length=500, blank=True, null=True)
 
     # This is how the object will be displayed in the Django admin panel.
