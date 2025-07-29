@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os # <-- FIX 1: Import the 'os' module
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,18 +38,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'tailwind',
+    # 'tailwind', # We are not using this package anymore
     'theme',
 ]
 
-TAILWIND_APP_NAME = 'theme'
-
-# <-- FIX 2: Corrected typo from 'pm.cmd' to 'npm.cmd'
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+# We don't need these settings anymore
+# TAILWIND_APP_NAME = 'theme'
+# NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+# INTERNAL_IPS = ["127.0.0.1",]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -66,7 +62,6 @@ ROOT_URLCONF = "forum_project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        # <-- FIX 3: Tell Django where to find the main templates folder
         "DIRS": [os.path.join(BASE_DIR, 'theme/templates')],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -82,13 +77,20 @@ TEMPLATES = [
 WSGI_APPLICATION = "forum_project.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+# ==============================================================================
+# DATABASE CONFIGURATION (THE ONLY ONE!)
+# ==============================================================================
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'forum_db',
+        'USER': 'root',
+        'PASSWORD': os.getenv('DB_PASSWORD', default=None), # Retrieve password from environment variable
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
@@ -129,7 +131,6 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-# <-- FIX 4: Tell Django where to find the main static files folder
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'theme/static')
 ]
