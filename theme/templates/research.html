@@ -24,12 +24,30 @@
     <!-- Navbar (same as homepage) -->
     <header class="navbar-blur sticky top-0 z-50 px-6 py-4">
         <div class="container mx-auto flex items-center justify-between">
-            <a class="text-3xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500" href="/">
-                ErrorMirror
-            </a>
             <div class="flex items-center space-x-4">
-                 <a href="/" class="text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
-                 <a href="/research/" class="text-cyan-400 font-semibold">Research</a>
+                <a class="text-3xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 glow-text hover:from-cyan-300 hover:to-blue-400 transition-all duration-300" href="/">
+                    ErrorMirror
+                </a>
+                <span class="text-xs px-2 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium">BETA</span>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="{% url 'home' %}" class="text-white/80 hover:text-white transition-colors">Home</a>
+                <a href="{% url 'research' %}" class="text-white hover:text-cyan-400 transition-colors font-semibold">Research</a>
+                <a href="{% url 'discussion' %}" class="text-white/80 hover:text-white transition-colors">Discussion</a>
+                <a href="{% url 'explore_topics' %}" class="text-white/80 hover:text-white transition-colors">Explore Topics</a>
+                <a href="{% url 'about' %}" class="text-white/80 hover:text-white transition-colors">About</a>
+                <a href="{% url 'profile' %}" class="text-white/80 hover:text-white transition-colors">Profile</a>
+                <a href="{% url 'login' %}" class="text-white/80 hover:text-white transition-colors">Login</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 p-0.5">
+                    <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
+                        <span class="text-sm font-bold text-cyan-400">U</span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
