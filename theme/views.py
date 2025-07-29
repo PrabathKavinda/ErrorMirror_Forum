@@ -14,6 +14,26 @@ def home(request):
 def research_discussion(request):
     return render(request, 'research.html')
 
+# NEW: View for the about page
+def about(request):
+    return render(request, 'about.html')
+
+# NEW: View for the discussion page
+def discussion(request):
+    return render(request, 'discussion.html')
+
+# NEW: View for exploring topics
+def explore_topics(request):
+    return render(request, 'explore-topics.html')
+
+# NEW: View for the login page
+def login_view(request):
+    return render(request, 'login.html')
+
+# NEW: View for the user profile page
+def profile(request):
+    return render(request, 'profile.html')
+
 # --- --- --- --- --- --- --- --- --- --- --- --- ---
 
 def register(request):

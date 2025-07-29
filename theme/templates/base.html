@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Django Tailwind</title>
+    <title>{% block title %}Forum - Django Tailwind{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,17 +10,41 @@
 </head>
 
 <body class="bg-gray-50 text-black font-serif leading-normal tracking-normal">
-
-    <div class="toast toast-top toast-end">
-        <div class="alert alert-info">
-            <span>Hello from daisyUi 👋</span>
+    
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold">
+                    <a href="{% url 'home' %}" class="hover:text-blue-200">Forum</a>
+                </div>
+                <div class="space-x-6">
+                    <a href="{% url 'home' %}" class="hover:text-blue-200 transition">Home</a>
+                    <a href="{% url 'research' %}" class="hover:text-blue-200 transition">Research</a>
+                    <a href="{% url 'discussion' %}" class="hover:text-blue-200 transition">Discussion</a>
+                    <a href="{% url 'explore_topics' %}" class="hover:text-blue-200 transition">Explore Topics</a>
+                    <a href="{% url 'about' %}" class="hover:text-blue-200 transition">About</a>
+                    <a href="{% url 'profile' %}" class="hover:text-blue-200 transition">Profile</a>
+                    <a href="{% url 'login' %}" class="hover:text-blue-200 transition">Login</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </nav>
 
-<div class="container mx-auto">
-    <section class="flex items-center justify-center h-screen">
-        <h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-    </section>
-</div>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        {% block content %}
+        <section class="flex items-center justify-center h-screen">
+            <h1 class="text-5xl">Django + Tailwind = ❤️</h1>
+        </section>
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Forum. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

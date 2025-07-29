@@ -1,0 +1,19 @@
+<!-- Navigation Bar -->
+<nav class="bg-blue-600 text-white shadow-lg mb-8">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <div class="text-xl font-bold">
+                <a href="{% url 'home' %}" class="hover:text-blue-200">ErrorMirror Forum</a>
+            </div>
+            <div class="space-x-6">
+                <a href="{% url 'home' %}" class="hover:text-blue-200 transition">Home</a>
+                <a href="{% url 'research' %}" class="hover:text-blue-200 transition">Research</a>
+                <a href="{% url 'discussion' %}" class="hover:text-blue-200 transition">Discussion</a>
+                <a href="{% url 'explore_topics' %}" class="hover:text-blue-200 transition">Explore Topics</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-200 transition">About</a>
+                <a href="{% url 'profile' %}" class="hover:text-blue-200 transition">Profile</a>
+                <a href="{% url 'login' %}" class="hover:text-blue-200 transition">Login</a>
+            </div>
+        </div>
+    </div>
+</nav>
