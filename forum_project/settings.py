@@ -80,13 +80,21 @@ WSGI_APPLICATION = "forum_project.wsgi.application"
 # ==============================================================================
 # DATABASE CONFIGURATION (THE ONLY ONE!)
 # ==============================================================================
-# MySQL Configuration (currently having MySQLdb module issues)
+# SQLite configuration for development
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# MySQL Configuration (Enable this when you need to scale up)
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'forum_db',
 #         'USER': 'root',
-#         'PASSWORD': os.getenv('DB_PASSWORD', default=None), # Retrieve password from environment variable
+#         'PASSWORD': '',  # Replace with your MySQL root password
 #         'HOST': '127.0.0.1',
 #         'PORT': '3306',
 #         'OPTIONS': {
@@ -94,14 +102,6 @@ WSGI_APPLICATION = "forum_project.wsgi.application"
 #         },
 #     }
 # }
-
-# Temporary SQLite configuration for development
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation

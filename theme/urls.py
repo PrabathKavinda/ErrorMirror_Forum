@@ -26,4 +26,7 @@ urlpatterns = [
 
     # NEW: Route for the user profile page
     path('profile/', views.profile, name='profile'),
+    
+    # Route for user registration
+    path('register/', views.register, name='register'),
 ]
